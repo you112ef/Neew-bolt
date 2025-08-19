@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+      - main
+      - cursor/scale-down-elements-for-small-screens-3473
   pull_request:
 
 jobs:

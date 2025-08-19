@@ -603,7 +603,7 @@ export function RepositorySelectionDialog({ isOpen, onClose, onSelect }: Reposit
                     <button
                       onClick={() => setActiveTab('my-repos')}
                       className={classNames(
-                        'flex-1 py-3 px-4 text-center text-sm font-medium transition-colors',
+                        'flex-1 py-2 px-2 sm:py-3 sm:px-4 text-center text-xs sm:text-sm font-medium transition-colors',
                         activeTab === 'my-repos'
                           ? 'bg-[#e6e6e6] dark:bg-[#2a2a2a] text-bolt-elements-textPrimary dark:text-bolt-elements-textPrimary-dark'
                           : 'bg-[#f0f0f0] dark:bg-[#1e1e1e] text-bolt-elements-textSecondary dark:text-bolt-elements-textSecondary-dark hover:bg-[#e6e6e6] dark:hover:bg-[#2a2a2a]/50',
@@ -614,7 +614,7 @@ export function RepositorySelectionDialog({ isOpen, onClose, onSelect }: Reposit
                     <button
                       onClick={() => setActiveTab('search')}
                       className={classNames(
-                        'flex-1 py-3 px-4 text-center text-sm font-medium transition-colors',
+                        'flex-1 py-2 px-2 sm:py-3 sm:px-4 text-center text-xs sm:text-sm font-medium transition-colors',
                         activeTab === 'search'
                           ? 'bg-[#e6e6e6] dark:bg-[#2a2a2a] text-bolt-elements-textPrimary dark:text-bolt-elements-textPrimary-dark'
                           : 'bg-[#f0f0f0] dark:bg-[#1e1e1e] text-bolt-elements-textSecondary dark:text-bolt-elements-textSecondary-dark hover:bg-[#e6e6e6] dark:hover:bg-[#2a2a2a]/50',
@@ -625,7 +625,7 @@ export function RepositorySelectionDialog({ isOpen, onClose, onSelect }: Reposit
                     <button
                       onClick={() => setActiveTab('url')}
                       className={classNames(
-                        'flex-1 py-3 px-4 text-center text-sm font-medium transition-colors',
+                        'flex-1 py-2 px-2 sm:py-3 sm:px-4 text-center text-xs sm:text-sm font-medium transition-colors',
                         activeTab === 'url'
                           ? 'bg-[#e6e6e6] dark:bg-[#2a2a2a] text-bolt-elements-textPrimary dark:text-bolt-elements-textPrimary-dark'
                           : 'bg-[#f0f0f0] dark:bg-[#1e1e1e] text-bolt-elements-textSecondary dark:text-bolt-elements-textSecondary-dark hover:bg-[#e6e6e6] dark:hover:bg-[#2a2a2a]/50',

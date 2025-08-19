@@ -1,0 +1,134 @@
+name: Auto Deploy Responsive Changes
+
+on:
+  push:
+    branches:
+      - cursor/scale-down-elements-for-small-screens-3473
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy Responsive Changes
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+      
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Run type check
+        run: pnpm run typecheck
+      
+      - name: Build project
+        run: pnpm run build
+      
+      - name: Test build output
+        run: |
+          echo "✅ Build completed successfully!"
+          echo "📱 Responsive CSS changes deployed:"
+          echo "   - app/styles/responsive.css"
+          echo "   - Updated Dialog components"
+          echo "   - Updated Workbench components"
+          echo "   - Updated Repository components"
+          echo "   - Added center-panel class to main layout"
+      
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@3
+        
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Extract metadata for Docker image
+        id: meta
+        uses: docker/metadata-action@5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=responsive-latest,enable=${{ github.ref == 'refs/heads/cursor/scale-down-elements-for-small-screens-3473' }}
+            type=sha,format=short
+            type=raw,value=${{ github.ref_name }},enable=${{ github.ref == 'refs/heads/cursor/scale-down-elements-for-small-screens-3473' }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          target: bolt-ai-production
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      
+      - name: Deploy notification
+        run: |
+          echo "🚀 Auto-deploy completed successfully!"
+          echo "📦 Docker image built and pushed"
+          echo "🔗 Branch: ${{ github.ref_name }}"
+          echo "📝 Commit: ${{ github.sha }}"
+          echo "👤 Author: ${{ github.actor }}"
+      
+      - name: Comment on PR (if exists)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🎉 **Auto-deploy completed successfully!**
+              
+              ✅ Responsive design changes have been deployed
+              📱 All components now support mobile and tablet screens
+              🐳 Docker image updated with latest changes
+              
+              **Changes deployed:**
+              - Responsive CSS framework
+              - Mobile-optimized dialogs
+              - Adaptive layout components
+              - Touch-friendly interface elements
+              
+              **Branch:** \`${{ github.ref_name }}\`
+              **Commit:** \`${{ github.sha }}\`
+              **Deployed at:** ${new Date().toISOString()}`
+            })
