@@ -2,7 +2,7 @@ name: Docker Publish
 
 on:
   push:
-    branches: [main, stable]
+    branches: [main, stable, cursor/scale-down-elements-for-small-screens-3473]
     tags: ['v*', '*.*.*']
   workflow_dispatch:
 
