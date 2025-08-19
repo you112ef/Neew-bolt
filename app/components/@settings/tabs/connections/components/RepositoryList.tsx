@@ -49,7 +49,7 @@ export function RepositoryList({ repos, isLoading, onSelect, activeTab }: Reposi
   }
 
   return (
-    <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
       {repos.map((repo) => (
         <RepositoryCard key={repo.full_name} repo={repo} onSelect={() => onSelect(repo)} />
       ))}
