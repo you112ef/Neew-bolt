@@ -55,19 +55,19 @@ export function McpTools() {
           className="transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {!isInitialized ? (
-            <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
+            <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-lg animate-spin"></div>
           ) : (
-            <div className="i-bolt:mcp text-xl"></div>
+            <div className="i-bolt:mcp text-lg"></div>
           )}
         </IconButton>
       </div>
 
       <DialogRoot open={isDialogOpen} onOpenChange={handleDialogOpen}>
         {isDialogOpen && (
-          <Dialog className="max-w-4xl w-full p-6">
+          <Dialog className="max-w-4xl w-full p-4">
             <div className="space-y-4 max-h-[80vh] overflow-y-auto pr-2">
               <DialogTitle>
-                <div className="i-bolt:mcp text-xl"></div>
+                <div className="i-bolt:mcp text-lg"></div>
                 MCP tools
               </DialogTitle>
 
@@ -78,7 +78,7 @@ export function McpTools() {
                       onClick={checkServerAvailability}
                       disabled={isCheckingServers || serverEntries.length === 0}
                       className={classNames(
-                        'px-3 py-1.5 rounded-lg text-sm',
+                        'px-2 py-1 rounded-lg text-xs',
                         'bg-bolt-elements-background-depth-3 hover:bg-bolt-elements-background-depth-4',
                         'text-bolt-elements-textPrimary',
                         'transition-all duration-200',

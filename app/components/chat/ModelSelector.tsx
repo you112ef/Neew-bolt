@@ -249,7 +249,7 @@ export const ModelSelector = ({
       <div className="relative flex w-full" onKeyDown={handleProviderKeyDown} ref={providerDropdownRef}>
         <div
           className={classNames(
-            'w-full p-2 rounded-lg border border-bolt-elements-borderColor',
+            'w-full p-1.5 rounded-lg border border-bolt-elements-borderColor',
             'bg-bolt-elements-prompt-background text-bolt-elements-textPrimary',
             'focus-within:outline-none focus-within:ring-2 focus-within:ring-bolt-elements-focus',
             'transition-all cursor-pointer',
@@ -272,7 +272,7 @@ export const ModelSelector = ({
             <div className="truncate">{provider?.name || 'Select provider'}</div>
             <div
               className={classNames(
-                'i-ph:caret-down w-4 h-4 text-bolt-elements-textSecondary opacity-75',
+                'i-ph:caret-down w-3 h-3 text-bolt-elements-textSecondary opacity-75',
                 isProviderDropdownOpen ? 'rotate-180' : undefined,
               )}
             />
@@ -294,7 +294,7 @@ export const ModelSelector = ({
                   onChange={(e) => setProviderSearchQuery(e.target.value)}
                   placeholder="Search providers..."
                   className={classNames(
-                    'w-full pl-2 py-1.5 rounded-md text-sm',
+                    'w-full pl-2 py-1 rounded-md text-xs',
                     'bg-bolt-elements-background-depth-2 border border-bolt-elements-borderColor',
                     'text-bolt-elements-textPrimary placeholder:text-bolt-elements-textTertiary',
                     'focus:outline-none focus:ring-2 focus:ring-bolt-elements-focus',
@@ -336,7 +336,7 @@ export const ModelSelector = ({
                     role="option"
                     aria-selected={provider?.name === providerOption.name}
                     className={classNames(
-                      'px-3 py-2 text-sm cursor-pointer',
+                      'px-2 py-1.5 text-xs cursor-pointer',
                       'hover:bg-bolt-elements-background-depth-3',
                       'text-bolt-elements-textPrimary',
                       'outline-none',
@@ -376,7 +376,7 @@ export const ModelSelector = ({
       <div className="relative flex w-full min-w-[70%]" onKeyDown={handleModelKeyDown} ref={modelDropdownRef}>
         <div
           className={classNames(
-            'w-full p-2 rounded-lg border border-bolt-elements-borderColor',
+            'w-full p-1.5 rounded-lg border border-bolt-elements-borderColor',
             'bg-bolt-elements-prompt-background text-bolt-elements-textPrimary',
             'focus-within:outline-none focus-within:ring-2 focus-within:ring-bolt-elements-focus',
             'transition-all cursor-pointer',
@@ -399,7 +399,7 @@ export const ModelSelector = ({
             <div className="truncate">{modelList.find((m) => m.name === model)?.label || 'Select model'}</div>
             <div
               className={classNames(
-                'i-ph:caret-down w-4 h-4 text-bolt-elements-textSecondary opacity-75',
+                'i-ph:caret-down w-3 h-3 text-bolt-elements-textSecondary opacity-75',
                 isModelDropdownOpen ? 'rotate-180' : undefined,
               )}
             />
@@ -423,7 +423,7 @@ export const ModelSelector = ({
                       setShowFreeModelsOnly(!showFreeModelsOnly);
                     }}
                     className={classNames(
-                      'flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium transition-all',
+                      'flex items-center gap-1 px-1.5 py-0.5 rounded-md text-xs font-medium transition-all',
                       'hover:bg-bolt-elements-background-depth-3',
                       showFreeModelsOnly
                         ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
@@ -450,7 +450,7 @@ export const ModelSelector = ({
                   onChange={(e) => setModelSearchQuery(e.target.value)}
                   placeholder="Search models..."
                   className={classNames(
-                    'w-full pl-2 py-1.5 rounded-md text-sm',
+                    'w-full pl-2 py-1 rounded-md text-xs',
                     'bg-bolt-elements-background-depth-2 border border-bolt-elements-borderColor',
                     'text-bolt-elements-textPrimary placeholder:text-bolt-elements-textTertiary',
                     'focus:outline-none focus:ring-2 focus:ring-bolt-elements-focus',
@@ -496,7 +496,7 @@ export const ModelSelector = ({
                     role="option"
                     aria-selected={model === modelOption.name}
                     className={classNames(
-                      'px-3 py-2 text-sm cursor-pointer',
+                      'px-2 py-1.5 text-xs cursor-pointer',
                       'hover:bg-bolt-elements-background-depth-3',
                       'text-bolt-elements-textPrimary',
                       'outline-none',

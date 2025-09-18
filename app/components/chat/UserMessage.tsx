@@ -43,7 +43,7 @@ export function UserMessage({ content, parts }: UserMessageProps) {
               <img
                 src={profile.avatar}
                 alt={profile?.username || 'User'}
-                className="w-[25px] h-[25px] object-cover rounded-full"
+                className="w-[18px] h-[18px] object-cover rounded-full"
                 loading="eager"
                 decoding="sync"
               />
@@ -52,7 +52,7 @@ export function UserMessage({ content, parts }: UserMessageProps) {
               </span>
             </div>
           ) : (
-            <div className="i-ph:user-fill text-accent-500 text-2xl" />
+            <div className="i-ph:user-fill text-accent-500 text-lg" />
           )}
         </div>
         <div className="flex flex-col gap-4 bg-accent-500/10 backdrop-blur-sm p-3 py-3 w-auto rounded-lg mr-auto">
@@ -63,7 +63,7 @@ export function UserMessage({ content, parts }: UserMessageProps) {
               src={`data:${item.mimeType};base64,${item.data}`}
               alt={`Image ${index + 1}`}
               className="max-w-full h-auto rounded-lg"
-              style={{ maxHeight: '512px', objectFit: 'contain' }}
+              style={{ maxHeight: '256px', objectFit: 'contain' }}
             />
           ))}
         </div>
@@ -78,7 +78,7 @@ export function UserMessage({ content, parts }: UserMessageProps) {
       <div className="flex gap-3.5 mb-4">
         {images.map((item, index) => (
           <div className="relative flex rounded-lg border border-bolt-elements-borderColor overflow-hidden">
-            <div className="h-16 w-16 bg-transparent outline-none">
+            <div className="h-12 w-12 bg-transparent outline-none">
               <img
                 key={index}
                 src={`data:${item.mimeType};base64,${item.data}`}

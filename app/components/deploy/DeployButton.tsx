@@ -61,11 +61,11 @@ export const DeployButton = ({ onVercelDeploy, onNetlifyDeploy }: DeployButtonPr
   };
 
   return (
-    <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden text-sm">
+    <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden text-xs">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger
           disabled={isDeploying || !activePreview || isStreaming}
-          className="rounded-md items-center justify-center [&:is(:disabled,.disabled)]:cursor-not-allowed [&:is(:disabled,.disabled)]:opacity-60 px-3 py-1.5 text-xs bg-accent-500 text-white hover:text-bolt-elements-item-contentAccent [&:not(:disabled,.disabled)]:hover:bg-bolt-elements-button-primary-backgroundHover outline-accent-500 flex gap-1.7"
+          className="rounded-md items-center justify-center [&:is(:disabled,.disabled)]:cursor-not-allowed [&:is(:disabled,.disabled)]:opacity-60 px-2 py-1 text-xs bg-accent-500 text-white hover:text-bolt-elements-item-contentAccent [&:not(:disabled,.disabled)]:hover:bg-bolt-elements-button-primary-backgroundHover outline-accent-500 flex gap-1.5"
         >
           {isDeploying ? `Deploying to ${deployingTo}...` : 'Deploy'}
           <span className={classNames('i-ph:caret-down transition-transform')} />
@@ -84,7 +84,7 @@ export const DeployButton = ({ onVercelDeploy, onNetlifyDeploy }: DeployButtonPr
         >
           <DropdownMenu.Item
             className={classNames(
-              'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-bolt-elements-textPrimary hover:bg-bolt-elements-item-backgroundActive gap-2 rounded-md group relative',
+              'cursor-pointer flex items-center w-full px-3 py-1.5 text-xs text-bolt-elements-textPrimary hover:bg-bolt-elements-item-backgroundActive gap-1.5 rounded-md group relative',
               {
                 'opacity-60 cursor-not-allowed': isDeploying || !activePreview || !netlifyConn.user,
               },
@@ -93,9 +93,9 @@ export const DeployButton = ({ onVercelDeploy, onNetlifyDeploy }: DeployButtonPr
             onClick={handleNetlifyDeployClick}
           >
             <img
-              className="w-5 h-5"
-              height="24"
-              width="24"
+              className="w-4 h-4"
+              height="16"
+              width="16"
               crossOrigin="anonymous"
               src="https://cdn.simpleicons.org/netlify"
             />
@@ -105,7 +105,7 @@ export const DeployButton = ({ onVercelDeploy, onNetlifyDeploy }: DeployButtonPr
 
           <DropdownMenu.Item
             className={classNames(
-              'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-bolt-elements-textPrimary hover:bg-bolt-elements-item-backgroundActive gap-2 rounded-md group relative',
+              'cursor-pointer flex items-center w-full px-3 py-1.5 text-xs text-bolt-elements-textPrimary hover:bg-bolt-elements-item-backgroundActive gap-1.5 rounded-md group relative',
               {
                 'opacity-60 cursor-not-allowed': isDeploying || !activePreview || !vercelConn.user,
               },
@@ -114,9 +114,9 @@ export const DeployButton = ({ onVercelDeploy, onNetlifyDeploy }: DeployButtonPr
             onClick={handleVercelDeployClick}
           >
             <img
-              className="w-5 h-5 bg-black p-1 rounded"
-              height="24"
-              width="24"
+              className="w-4 h-4 bg-black p-0.5 rounded"
+              height="16"
+              width="16"
               crossOrigin="anonymous"
               src="https://cdn.simpleicons.org/vercel/white"
               alt="vercel"
@@ -127,12 +127,12 @@ export const DeployButton = ({ onVercelDeploy, onNetlifyDeploy }: DeployButtonPr
 
           <DropdownMenu.Item
             disabled
-            className="flex items-center w-full rounded-md px-4 py-2 text-sm text-bolt-elements-textTertiary gap-2 opacity-60 cursor-not-allowed"
+            className="flex items-center w-full rounded-md px-3 py-1.5 text-xs text-bolt-elements-textTertiary gap-1.5 opacity-60 cursor-not-allowed"
           >
             <img
-              className="w-5 h-5"
-              height="24"
-              width="24"
+              className="w-4 h-4"
+              height="16"
+              width="16"
               crossOrigin="anonymous"
               src="https://cdn.simpleicons.org/cloudflare"
               alt="cloudflare"
