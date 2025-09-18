@@ -127,12 +127,12 @@ export const DeployButton = ({ onVercelDeploy, onNetlifyDeploy }: DeployButtonPr
 
           <DropdownMenu.Item
             disabled
-            className="flex items-center w-full rounded-md px-4 py-2 text-sm text-bolt-elements-textTertiary gap-2 opacity-60 cursor-not-allowed"
+            className="flex items-center w-full rounded-md px-3 py-1.5 text-xs text-bolt-elements-textTertiary gap-1.5 opacity-60 cursor-not-allowed"
           >
             <img
-              className="w-5 h-5"
-              height="24"
-              width="24"
+              className="w-4 h-4"
+              height="16"
+              width="16"
               crossOrigin="anonymous"
               src="https://cdn.simpleicons.org/cloudflare"
               alt="cloudflare"
