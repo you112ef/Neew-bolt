@@ -121,19 +121,19 @@ export const ImportFolderButton: React.FC<ImportFolderButtonProps> = ({ classNam
         }}
         title="Import Folder"
         variant="default"
-        size="lg"
+        size="sm"
         className={classNames(
           'gap-2 bg-bolt-elements-background-depth-1',
           'text-bolt-elements-textPrimary',
           'hover:bg-bolt-elements-background-depth-2',
           'border border-bolt-elements-borderColor',
-          'h-10 px-4 py-2 min-w-[120px] justify-center',
+          'h-7 px-3 py-1.5 min-w-[100px] justify-center',
           'transition-all duration-200 ease-in-out',
           className,
         )}
         disabled={isLoading}
       >
-        <span className="i-ph:upload-simple w-4 h-4" />
+        <span className="i-ph:upload-simple w-3 h-3" />
         {isLoading ? 'Importing...' : 'Import Folder'}
       </Button>
     </>
